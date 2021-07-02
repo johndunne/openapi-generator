@@ -1,7 +1,14 @@
 package handlers
 
+type container interface {
+{{#operations}}{{#operation}}
+    {operationId}}(ctx echo.Context) error     // {{nickname}} - {{{summary}}}
+{{/operation}}{{/operations}}
+}
+
 // Container will hold all dependencies for your application.
 type Container struct {
+    container
 }
 
 // NewContainer returns an empty or an initialized container for your handlers.
